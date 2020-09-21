@@ -15,6 +15,8 @@ class signin extends Component {
 		this.setState({signinPass: event.target.value});
 	}
 	onSubmitSignIn = () => {
+		console.log(this.state.signinField);
+		console.log(this.state.signinPass);
 		fetch('http://localhost:3000/signin',{
 			method: 'post',
 			headers: {'Content-Type': 'application/json'},
@@ -25,11 +27,12 @@ class signin extends Component {
 		})
 		.then(response => response.json())
 		.then(data => {
+			console.log(data);
 			if (data.id){
-				// this.props.onRouteChange('home');
+				this.props.onRouteChange('/');
 			}
 			else{
-				alert('Login or Password incorrect.')
+				alert('Login or Password incorrect.');
 			}
 		})
 
@@ -38,20 +41,20 @@ class signin extends Component {
 		return (
 		<div style={{ JustifyContent: 'center'}}>
 		<form>
-			  <div class="form-group">
-			    <label for="exampleInputEmail1">Email address</label>
-			    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange = {this.onFieldChange}/>
-			    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+			  <div className="form-group">
+			    <label >Email address</label>
+			    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange = {this.onFieldChange}/>
+			    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
 			  </div>
-			  <div class="form-group">
-			    <label for="exampleInputPassword1">Password</label>
-			    <input type="password" class="form-control" id="exampleInputPassword1" onChange = {this.onPasswordhange}/>
+			  <div className="form-group">
+			    <label >Password</label>
+			    <input type="password" className="form-control" id="exampleInputPassword1" onChange = {this.onPasswordChange}/>
 			  </div>
-			  <div class="form-group form-check">
-			    <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-			    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+			  <div className="form-group form-check">
+			    <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
+			    <label className="form-check-label" >Check me out</label>
 			  </div>
-			  <button type="submit" class="btn btn-primary" onClick = {this.onSubmitSignIn} >Submit</button>
+			  <button type="submit" className="btn btn-primary" onClick = {this.onSubmitSignIn} >Submit</button>
 			</form>
 		</div>
 			);

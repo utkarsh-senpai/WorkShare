@@ -7,17 +7,20 @@ class Nav extends React.Component {
 	onLogin = () =>{
 		this.props.onRouteChange('signin');
 	}
+	onSignUp = () =>{
+		this.props.onRouteChange('register');
+	}
 	render(){
 		return(
 		<div>
-			<div class="card text-center">
-			  <div class="card-header">
-			    <ul class="nav nav-pills card-header-pills float-right">
-			      <li class="nav-item pr-3">
-			        <button type="button" class="btn btn-outline-success" onClick = {this.onLogin}>Login</button>
+			<div className="card text-center">
+			  <div className="card-header">
+			    <ul className="nav nav-pills card-header-pills float-right">
+			      <li className="nav-item pr-3">
+			        <button type="button" className="btn btn-outline-success" onClick = {this.onLogin}>Login</button>
 			      </li>
-			      <li class="nav-item">
-			        <button type="button" class="btn btn-outline-success">SignUp</button>
+			      <li className="nav-item">
+			        <button type="button" className="btn btn-outline-success" onClick = {this.onSignUp}>SignUp</button>
 			      </li>
 			    </ul>
 			  </div>
