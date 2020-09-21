@@ -1,26 +1,46 @@
-import React from 'react';
+import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import './App.css';
-function App() {
-  return (
-    <div class="card text-center">
-  <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs float-right">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Log In</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Sign In</a>
-      </li>
-    </ul>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">About Page</h5>
-    <p class="card-text">About the Project</p>
-    <a href="#" class="btn btn-primary">Scroll Up</a>
-  </div>
-</div>
-  );
+import Nav from './Nav';
+import Signin from './signin';
+
+class App extends Component {
+  constructor () {
+    super();
+    this.state ={
+      route: '/',
+      user: {
+          id: '',
+          fname: '',
+          lname: '',
+          email: '',
+          password: '',
+          pnum: '',
+          linkedin: '',
+          github: '',
+          skill1: '',
+          skill2: '',
+          skill3: ''
+      }  
+    }
+  }
+  onRouteChange = (route) => {
+    this.setState({route: route})
+  }
+  render () {
+    if (this.state.route === 'signin'){
+      return(
+        <Signin onRouteChange = {this.onRouteChange}/>
+        );
+    }
+    else {
+      return (
+          <div>
+            <Nav onRouteChange = {this.onRouteChange} />
+          </div>
+        );
+    }
+  }
+
 }
 
 export default App;
