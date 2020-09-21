@@ -1,0 +1,22 @@
+create database workshare;
+
+\c workshare;
+
+create table users (
+	id serial primary key,
+	fname varchar(50) not null,
+	lname varchar(50),
+	username varchar(10) not null unique,
+	pnum varchar(10) unique,
+	email text unique not null,
+	linkedin varchar(100),
+	github varchar(100)
+	);
+
+	
+create table login (
+	id serial primary key,
+	email text unique not null,
+	username varchar(10),
+	hash varchar(100)
+);
